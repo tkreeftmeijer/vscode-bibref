@@ -14,9 +14,6 @@ export async function appendBibToFile(
   if (!workspaceRoot) return;
 
   const filePath = path.join(workspaceRoot, relativePath);
-  //const fileUri = vscode.Uri.file(filePath);
-  
-  //const filePath = "C:/Users/Thomas Kreeftmeijer/OneDrive - Lund University/Master's project/Article - LaTeX/references.bib"
 
   vscode.window.showInformationMessage(`File path reference files: '${filePath}'`)
 
