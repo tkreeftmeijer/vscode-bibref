@@ -1,3 +1,4 @@
+import * as vscode from 'vscode'
 import { Cite } from '@citation-js/core'
 import { logger } from './utils'
 
@@ -17,6 +18,7 @@ export async function getBiblatexFromId(id: string): Promise<string> {
 
   if (cites.data.length === 0) {
     logger.error(`\n\ngetBiblatexFromId('${id}') found no references.`)
+    vscode.window.showInformationMessage(`\n\ngetBiblatexFromId('${id}') found no references.`)
     return ''
   }
   else {

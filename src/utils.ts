@@ -23,5 +23,6 @@ export async function appendBibToFile(
     }
   else {
     vscode.window.showInformationMessage(`Bib file doesn't exist, please check settings...`)
+    return;
   }
 }
