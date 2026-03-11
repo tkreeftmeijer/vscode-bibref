@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 import * as path from 'path'
-import { appendFileSync } from 'fs';
+import { appendFile } from 'fs';
+import { existsSync } from 'fs';
 import { useLogger } from 'reactive-vscode'
 import { displayName } from './generated/meta'
 
@@ -15,7 +16,9 @@ export async function appendBibToFile(
 
   const filePath = path.join(workspaceRoot, relativePath);
 
-  vscode.window.showInformationMessage(`File path reference files: '${filePath}'`)
-
-  appendFileSync(filePath, text)
+  if (existsSync(filePath)) {
+    appendFile(filePath, text, (err) => 
+        {if (err) throw err;
+          vscode.window.showInformationMessage(`Citation added to file!`)})
+    }
 }

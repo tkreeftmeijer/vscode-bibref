@@ -19,6 +19,10 @@ export async function fetchBibFromId() {
   vscode.window.withProgress(progressOptions, async (progress, _token) => {
     progress.report({ message: `Fetching BibLaTeX for ${id}` })
     const bib = await getBiblatexFromId(id)
+    if (!bib) {
+      vscode.window.showWarningMessage(`Could not find a citation for "${id}".`);
+      return;
+    }
     const selection = await vscode.window.showInformationMessage(bib, { title: 'Add to bib', isCloseAffordance: false })
     if (selection && selection.title === 'Add to bib') {
       const refName = bib.match(/\{\s*([^,]+)/)
