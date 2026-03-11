@@ -1,8 +1,8 @@
 {
   "publisher": "coraldigital",
   "name": "bibref",
-  "displayName": "BibRef new",
-  "version": "0.3.1",
+  "displayName": "BibRef",
+  "version": "0.3.0",
   "private": true,
   "packageManager": "pnpm@10.4.1",
   "description": "A VSCode Extension for BibLaTeX-friendly bibliography management",
@@ -34,26 +34,20 @@
       {
         "command": "bibref.fetchDOI",
         "category": "BibRef",
-        "title": "Fetch from identifier... new"
+        "title": "Fetch from identifier..."
       }
     ],
     "configuration": {
       "type": "object",
       "title": "bibref",
-      "properties": {
-        "bibref.bibFile": {
-          "type": "string",
-          "default": "references.bib",
-          "description": "Relative path to the *.bib file to which references should be added."
-        }
-      }
+      "properties": {}
     }
   },
   "scripts": {
     "tsdbuild": "tsdown src/index.ts --external vscode",
-    "build": "del dist && webpack",
+    "build": "rm -rf dist && webpack",
     "webpack": "webpack",
-    "dev": "pnpm run build --watch",
+    "dev": "pnpm run build --watch --sourcemap",
     "prepare": "pnpm run update",
     "update": "vscode-ext-gen --output src/generated/meta.ts",
     "lint": "eslint .",
