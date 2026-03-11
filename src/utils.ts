@@ -21,4 +21,7 @@ export async function appendBibToFile(
         {if (err) throw err;
           vscode.window.showInformationMessage(`Citation added to file!`)})
     }
+  else {
+    vscode.window.showInformationMessage(`Bib file doesn't exist, please check settings...`)
+  }
 }
